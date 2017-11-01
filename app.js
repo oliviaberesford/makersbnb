@@ -13,6 +13,8 @@ var app = express();
 // var mongoose = require('mongoose');
 // var landlord = require('./models/landlord');
 
+
+
 var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
@@ -45,7 +47,7 @@ var insertDocuments = function(db, callback) {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
