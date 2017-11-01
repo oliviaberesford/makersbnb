@@ -1,32 +1,30 @@
-// var mongoose = require('mongoose');
-// var Schema = mongoose.Schema;
-// if (mongoose.connection.readyState === 0) {
-//   mongoose.connect(require('./connection-string'));
-// }
+// 
+// var insertStuff = function(db, callback){
 //
-//
-// var newSchema = new Schema({
-//
-//   'name': { type: String },
-//   'propertyname': { type: String },
-//   'landlordId': { type: Schema.Types.ObjectId, ref: '' },
-//   'createdAt': { type: Date, default: Date.now },
-//   'updatedAt': { type: Date, default: Date.now }
-// });
-//
-// newSchema.pre('save', function(next){
-//   this.updatedAt = Date.now();
-//   next();
-// });
-//
-// newSchema.pre('update', function() {
-//   this.update({}, { $set: { updatedAt: Date.now() } });
-// });
-//
-// newSchema.pre('findOneAndUpdate', function() {
-//   this.update({}, { $set: { updatedAt: Date.now() } });
-// });
-//
-//
-//
-// module.exports = mongoose.model('Landlord', newSchema);
+//   var collection = db.collection('landlord');
+//   collection.insertMany([
+//     {name: 'alex'}, {propertyname: String}
+//   ]), function(err, result) {
+//       assert.equal(err, null);
+//       assert.equal(2, result.result.n);
+//       assert.equal(2, result.ops.length);
+//       console.log("Inserted 2 documents into the document collection");
+//   callback(result);
+//   };
+// };
+
+
+var insertDocuments = function(db, callback) {
+//   // Get the documents collection
+  var collection = db.collection('documents');
+//   // Insert some documents
+  collection.insertMany([
+    {a : 1}, {a : 2}, {a : 3}
+  ], function(err, result) {
+    assert.equal(err, null);
+    assert.equal(3, result.result.n);
+    assert.equal(3, result.ops.length);
+    console.log("Inserted 3 documents into the document collection");
+    callback(result);
+  });
+}
