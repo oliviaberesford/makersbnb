@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VIEW PROPERTIES</title>
+</head>
+
+<body>
+  PROPERTIES:
+
+  <ul class="landlord">
+    <% for(var i=0; i<landlord.length; i++) {%>
+      <li class="landlord">
+        Owner:
+        <span><%= landlord[i].name %></span>:<br />
+        Property Type:
+        <span><%= landlord[i].propertyname %></span><br />
+        Description:
+        <span><%= landlord[i].propertydescription %></span><br />
+        Price per night:
+        <span><%= landlord[i].ppn %></span><br />
+        Availabilty:
+        <span><%= landlord[i].from %></span> -
+        <span><%= landlord[i].until %></span>
+      </li>
+      <% } %>
+  </ul>
+</body>
+
+</html>

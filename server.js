@@ -17,22 +17,24 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.get('/', function(req, res) {
-  // res.sendFile(__dirname + '/index.html')
-  db.collection('landlord').find().toArray(function(err, result) {
-    // console.log(results)
+app.get('/listed-properties', function(req, res) {
+  db.collection('properties').find().toArray(function(err, result) {
     if (err) return console.log(err)
-    // renders index.ejs
-    res.render('index.ejs', {landlord: result})
+    res.render('property/index.ejs', {
+      landlord: result
+    })
   })
 });
 
+app.get('/new-property', function(req, res) {
+  res.render('property/new.ejs')
+});
 
-app.post('/landlord', (req, res) => {
-  db.collection('landlord').save(req.body, (err, result) => {
+app.post('/new-properties', (req, res) => {
+  db.collection('properties').save(req.body, (err, result) => {
     if (err) return console.log(err)
 
     console.log('saved to database')
-    res.redirect('/')
+    res.redirect('/listed-properties')
   })
 });
