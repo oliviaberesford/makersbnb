@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>LANDLORD NEW PROPERTY LISTING</title>
+</head>
+
+<body>
+  PROPERTIES:
+
+  <ul class="properties">
+    <% for(var i=0; i<properties.length; i++) {%>
+      <li class="property">
+        Owner:
+        <span><%= properties[i].name %></span>:<br />
+        Property Type:
+        <span><%= properties[i].propertyname %></span><br />
+        Description:
+        <span><%= properties[i].propertydescription %></span><br />
+        Price per night:
+        <span><%= properties[i].ppn %></span><br />
+        Availabilty:
+        <span><%= properties[i].from %></span> -
+        <span><%= properties[i].until %></span>
+      </li>
+      <% } %>
+    </ul>
+</body>
+
+</html>
