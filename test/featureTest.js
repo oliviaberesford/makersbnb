@@ -13,7 +13,7 @@ describe('Load a Page', function(){
 
     describe('/', () => {
       it('should take new user sign up details and redirect them to the login page', done => {
-      nightmare.goto('http://localhost:3000')
+      nightmare.goto('https://localhost:3001')
       .type('.signup-email-input', 'oliver@gmail.com')
       .type('.signup-password-input', 'password')
       .type('.signup-password-confirm-input', 'valid password')
@@ -27,7 +27,7 @@ describe('Load a Page', function(){
 
     describe('/login', () => {
       it('should log in new user with user details', done => {
-      nightmare.goto('http://localhost:3000/login')
+      nightmare.goto('http://localhost:3001/login')
       .type('.login-email-input', 'oliver@gmail.com')
       .type('.login-password-input', 'password')
       .click('.login-submit')

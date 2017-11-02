@@ -10,9 +10,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-// var mongoose = require('mongoose');
-// var landlord = require('./models/landlord');
-
 
 var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
