@@ -1,33 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>LANDLORD NEW PROPERTY LISTING</title>
+  <title>MAKERS BNB</title>
 </head>
 
 <body>
-  PROPERTIES:
+  Welcome to Makers BNB
 
-  <ul class="properties">
-    <% for(var i=0; i<properties.length; i++) {%>
-      <li class="property">
-        Owner:
-        <span><%= properties[i].name %></span>:<br />
-        Property Type:
-        <span><%= properties[i].propertyname %></span><br />
-        Description:
-        <span><%= properties[i].propertydescription %></span><br />
-        Price per night:
-        <span><%= properties[i].ppn %></span><br />
-        Availabilty:
-        <span><%= properties[i].from %></span> -
-        <span><%= properties[i].until %></span>
-      </li>
-      <% } %>
-    </ul>
+  are you a landlord?
+  <form>
+  <button formaction="/landlord-signup">Sign up!</button>
+  </form>
+  or
+  <form>
+  <button formaction="/landlord-login">Log in</button>
+  </form>
+
+  or tenant?
+  <form>
+  <button formaction="/tenant-signup">Sign up!</button>
+  </form>
+  or
+  <form>
+  <button formaction="/tenant-login">Log in</button>
+  </form>
+
 </body>
-<form>
-<button formaction="/new-property">Add Property</button>
-</form>
-</html>

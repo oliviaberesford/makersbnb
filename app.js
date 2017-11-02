@@ -21,6 +21,9 @@ mongoUtil.connectToServer(function(err) {
 
 
   var properties = require('./routes/properties');
+  var landlord = require('./routes/landlord');
+  var tenant = require('./routes/tenant');
+  var server = require('./routes/server');
 
   // uncomment after placing your favicon in /public
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -33,6 +36,7 @@ mongoUtil.connectToServer(function(err) {
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use('/properties', properties);
+  // app.use('/properties', properties);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
