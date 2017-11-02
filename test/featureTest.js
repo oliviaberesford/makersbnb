@@ -1,5 +1,6 @@
 const Nightmare = require('nightmare')
 const assert = require('assert')
+const chai = require('chai')
 
 describe('Load a Page', function(){
   this.timeout('30s')
@@ -10,15 +11,6 @@ describe('Load a Page', function(){
       nightmare = new Nightmare()
     })
 
-    // describe('/', () => {
-    //   it('should load without error', done => {
-    //   //need to update port.
-    //   nightmare.goto('http://localhost:3000')
-    //   .end()
-    //   .then(function(result) { done() })
-    //   .catch(done)
-    //   })
-    // })
     describe('/', () => {
       it('should take new user sign up details and redirect them to the login page', done => {
       nightmare.goto('http://localhost:3000')
@@ -32,4 +24,17 @@ describe('Load a Page', function(){
       .catch(done)
       })
     })
+
+    describe('/login', () => {
+      it('should log in new user with user details', done => {
+      nightmare.goto('http://localhost:3000/login')
+      .type('.login-email-input', 'oliver@gmail.com')
+      .type('.login-password-input', 'password')
+      .click('.login-submit')
+      .end()
+      .then(result => { done() })
+      .catch(done)
+      })
+    })
+
 })
