@@ -10,11 +10,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-// var mongoose = require('mongoose');
-// var landlord = require('./models/landlord');
-
-
-
 var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
@@ -81,3 +76,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+if(!module.parent){
+    app.listen(3000, function () {
+        console.log('Example app listening on port 3000!')
+    })
+}

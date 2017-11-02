@@ -1,44 +1,72 @@
-// 'use strict';
-//
-// const Browser = require('zombie');
-// var expect = require('chai').expect;
-// var app = require('../app');
-// var assert = require('assert');
-// var server;
-//
-// Browser.localhost('localhost:3000', 3000);
-//
-//  describe('user visits the sign up page', function() {
-//
-//    const browser = new Browser();
-//
-//    before(function(done) {
-//     // server = app.listen(3000);
-//      browser.visit('/', done);
-//    });
-//
-//    after(function() {
-//     //  server.close();
-//      //drop database
-//    });
-//
-//    describe('Sign up form', function() {
-//      before(function(done) {
-//        browser
-//        .fill('emailAddress', 'tom@example.com')
-//        .fill('password', 'password69')
-//        .fill('confirmPassword', 'password69')
-//        .pressButton('Sign Up', done);
-//      });
-//
-//      it('should be successful', function(){
-//        browser.assert.success();
-//      });
-//
-//      it('should see welcome page', function(){
-//        browser.assert.text('title', 'hello');
-//      });
-//
-//   });
-//
-//  });
+// force the test environment to 'test'
+process.env.NODE_ENV = 'test';
+var http = require('http');
+// get the application server module
+var app = require('../app');
+// use zombie.js as headless browser
+var Browser = require('zombie');
+var assert = require('assert');
+
+
+describe('makersbnb', function() {
+  before(function() {
+    this.server = http.createServer(app).listen(3000);
+    // initialize the browser using the same port as the test application
+    this.browser = new Browser({
+      site: 'http://localhost:3000'
+    });
+  });
+
+  describe('Sign up', function() {
+    before(function(done) {
+      this.browser.visit('/', done);
+    });
+
+    it('should sign up new user', function(done) {
+      this.browser.fill('emailAddress', 'email@example.com')
+      this.browser.fill('password', 'password69')
+      this.browser.fill('confirmPassword', 'password69')
+      this.browser.pressButton('Sign Up', done);
+    });
+
+
+  describe('Login', function() {
+    before(function(done) {
+      this.browser.visit('/login', done);
+    });
+
+    it('should log in a user', function(done) {
+      this.browser.fill('emailAddress', 'email@example.com')
+      this.browser.fill('password', 'password69')
+      this.browser.pressButton('Log in', done);
+    });
+  });
+
+  describe('post-property', function() {
+    before(function(done) {
+      this.browser.visit('/post-property', done);
+    });
+
+    it('should log in a user', function(done) {
+      this.browser.fill('property', 'big house')
+      this.browser.pressButton('Add property', done);
+    });
+  });
+
+  describe('view-properties', function() {
+    before(function(done) {
+      this.browser.visit('/view-properties', done);
+    });
+
+    it('shows user listed properties', function() {
+      assert.ok(this.browser.success);
+    });
+  });
+
+  });
+
+  after(function(done) {
+    this.server.close(done);
+  });
+
+});
