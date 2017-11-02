@@ -1,35 +1,44 @@
-const Nightmare = require('nightmare')
-const assert = require('assert')
-
-describe('Load a Page', function(){
-  this.timeout('30s')
-
-    let nightmare = null
-
-    beforeEach(() => {
-      nightmare = new Nightmare()
-    })
-
-    // describe('/', () => {
-    //   it('should load without error', done => {
-    //   //need to update port.
-    //   nightmare.goto('http://localhost:3000')
-    //   .end()
-    //   .then(function(result) { done() })
-    //   .catch(done)
-    //   })
-    // })
-    describe('/', () => {
-      it('should take new user sign up details and redirect them to the login page', done => {
-      nightmare.goto('http://localhost:3000')
-      .type('.signup-email-input', 'oliver@gmail.com')
-      .type('.signup-password-input', 'password')
-      .type('.signup-password-confirm-input', 'valid password')
-      .click('.signup-submit')
-      .click('.login')
-      .end()
-      .then(result => { done() })
-      .catch(done)
-      })
-    })
-})
+// 'use strict';
+//
+// const Browser = require('zombie');
+// var expect = require('chai').expect;
+// var app = require('../app');
+// var assert = require('assert');
+// var server;
+//
+// Browser.localhost('localhost:3000', 3000);
+//
+//  describe('user visits the sign up page', function() {
+//
+//    const browser = new Browser();
+//
+//    before(function(done) {
+//     // server = app.listen(3000);
+//      browser.visit('/', done);
+//    });
+//
+//    after(function() {
+//     //  server.close();
+//      //drop database
+//    });
+//
+//    describe('Sign up form', function() {
+//      before(function(done) {
+//        browser
+//        .fill('emailAddress', 'tom@example.com')
+//        .fill('password', 'password69')
+//        .fill('confirmPassword', 'password69')
+//        .pressButton('Sign Up', done);
+//      });
+//
+//      it('should be successful', function(){
+//        browser.assert.success();
+//      });
+//
+//      it('should see welcome page', function(){
+//        browser.assert.text('title', 'hello');
+//      });
+//
+//   });
+//
+//  });
