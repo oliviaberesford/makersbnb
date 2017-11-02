@@ -22,5 +22,4 @@ app.post('/new-properties', (req, res) => {
     console.log('saved to database');
     res.redirect('/listed-properties');
   });
-  console.log(db);
 });

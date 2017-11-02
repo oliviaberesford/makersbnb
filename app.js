@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoUtil = require('./mongoUtil.js');
+app.use(bodyParser.urlencoded({extended: true}));
 module.exports = app;
 
 mongoUtil.connectToServer(function(err) {
