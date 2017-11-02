@@ -5,18 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
+var mongoUtil = require( './mongoUtil.js' );
 
-const MongoClient = require('mongodb').MongoClient
-
-var db
-MongoClient.connect('mongodb://localhost:27017/makersbnb', (err, database) => {
-  if (err) return console.log(err)
-  db = database
-  app.listen(3000, () => {
-    console.log('listening on 3000')
-  })
-  console.log(db);
-});
+  mongoUtil.connectToServer( function( err ) {
+    // start the rest of your app here
+    app.listen(3000, () => {
+        console.log('listening on 3000');
+      });
 
 // view engine setup
 app.set('views', path.join(__dirname, './views'));
@@ -55,3 +50,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+} );
