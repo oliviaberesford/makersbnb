@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
   <meta charset="UTF-8">
   <title>LANDLORD NEW PROPERTY LISTING</title>
 </head>
@@ -15,8 +16,16 @@
     <input type="text" placeholder="price per night" name="ppn" required>
     <input type="text" placeholder="available from" name="from" required>
     <input type="text" placeholder="available until" name="until" required>
+    <div id="datepicker"></div>
     <button type="submit">List this space!</button>
   </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $(document).ready(function() {      //waits for page to load first
+    $('#datepicker').datepicker({});
+  });
+</script>
 
-</body
 </html>
