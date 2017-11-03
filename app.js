@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
-var mongoUtil = require('./mongoUtil.js');
+var mongoUtil = require('./config/database.js');
 app.use(bodyParser.urlencoded({extended: true}));
 module.exports = app;
 
@@ -36,6 +36,9 @@ mongoUtil.connectToServer(function(err) {
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use('/properties', properties);
+  app.use('/landlord', landlord);
+  app.use('/tenant', tenant);
+  app.use('/server', server);
   // app.use('/properties', properties);
 
   // catch 404 and forward to error handler

@@ -3,27 +3,25 @@
 
 <head>
   <title>MAKERS BNB</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 
-<body>
-  Welcome to Makers BNB
+  <body>
+    <div class="container">
 
-  are you a landlord?
-  <form>
-  <button formaction="/landlord-signup">Sign up!</button>
-  </form>
-  or
-  <form>
-  <button formaction="/landlord-login">Log in</button>
-  </form>
+      <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock"></span> Welcome to Makers BNB</h1>
 
-  or tenant?
-  <form>
-  <button formaction="/tenant-signup">Sign up!</button>
-  </form>
-  or
-  <form>
-  <button formaction="/tenant-login">Log in</button>
-  </form>
+        <p>Login or Register:</p>
 
-</body>
+        <a href="/tenant-login" class="btn btn-default"><span class="fa fa-user"></span>Tenant Login</a>
+        <a href="/tenant-signup" class="btn btn-default"><span class="fa fa-user"></span>Tenant Signup</a>
+        <a href="/landlord-login" class="btn btn-default"><span class="fa fa-user"></span>Landlord Login</a>
+        <a href="/landlord-signup" class="btn btn-default"><span class="fa fa-user"></span>Landlord Signup</a>
+      </div>
+
+    </div>
+  </body>
+
+  </html>
