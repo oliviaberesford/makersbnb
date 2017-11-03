@@ -11,8 +11,8 @@ module.exports = app;
 
 mongoUtil.connectToServer(function(err) {
   // start the rest of your app here
-  app.listen(3000, () => {
-    console.log('listening on 3000');
+  app.listen(3001, () => {
+    console.log('listening on 3001');
   });
 
   // view engine setup
