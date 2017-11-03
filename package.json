@@ -20,6 +20,7 @@
     "mongodb": "^2.2.33",
     "mongoose": "^4.12.6",
     "morgan": "~1.9.0",
+    "paperclip-bootstrap": "0.0.6",
     "passport": "~0.2.0",
     "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11",
