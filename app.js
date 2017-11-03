@@ -4,8 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// new suff
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash    = require('connect-flash');
+var session  = require('express-session');
+require('./routes/tenant.js')(app, passport);
+require('./config/passport')(passport);
+app.use(session({ secret: 'secret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+//
 var app = express();
 var mongoUtil = require('./config/database.js');
+
 app.use(bodyParser.urlencoded({extended: true}));
 module.exports = app;
 
