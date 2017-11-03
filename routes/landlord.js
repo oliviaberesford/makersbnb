@@ -5,32 +5,32 @@ var app = require('../app.js');
 var mongoUtil = require('../config/database.js');
 var db = mongoUtil.getDb();
 
-app.get('/landlord-signup', function(req, res) {
+app.get('/landlord/landlord-signup', function(req, res) {
   res.render('landlord/landlordsignup.ejs');
 });
 
 
-app.post('/landlord-signup', function(req, res) {
+app.post('/landlord/landlord-signup', function(req, res) {
   db.collection('landlords').save(req.body, (err, result) => {
     if (err) return console.log(err);
     console.log('saved to database');
-    res.redirect('/landlord-login');
+    res.redirect('/landlord/landlord-profile');
   });
 });
 
-app.get('/landlord-login', function(req, res) {
+app.get('/landlord/landlord-login', function(req, res) {
   res.render('landlord/landlordlogin.ejs');
 });
 
 
-app.post('/landlord-login', function(req, res) {
+app.post('/landlord/landlord-login', function(req, res) {
   db.collection('landlords').save(req.body, (err, result) => {
     if (err) return console.log(err);
     console.log('saved to database');
-    res.redirect('/landlord-profile');
+    res.redirect('/landlord/landlord-profile');
   });
 });
 
-app.get('/landlord-profile', function(req, res) {
+app.get('/landlord/landlord-profile', function(req, res) {
   res.render('landlord/landlordprofile.ejs');
 });
