@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var app = express();
+var mongoUtil = require('./config/database.js');
+
 // new suff
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -11,15 +14,18 @@ var flash    = require('connect-flash');
 var session  = require('express-session');
 require('./routes/tenant.js')(app, passport);
 require('./config/passport')(passport);
-app.use(session({ secret: 'secret' }));
+app.use(session({ secret: 'supersecret',
+cookie: { maxAge: 60000 },
+resave: true,
+saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(session({ secret: 'supersecret' }));
 app.use(flash());
 //
-var app = express();
-var mongoUtil = require('./config/database.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
+
 module.exports = app;
 
 mongoUtil.connectToServer(function(err) {
@@ -37,6 +43,10 @@ mongoUtil.connectToServer(function(err) {
   var landlord = require('./routes/landlord');
   var tenant = require('./routes/tenant');
   var server = require('./routes/server');
+  app.use('/properties', properties);
+  app.use('/landlord', landlord);
+  app.use('/tenant', tenant);
+  app.use('/server', server);
 
   // uncomment after placing your favicon in /public
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -48,11 +58,6 @@ mongoUtil.connectToServer(function(err) {
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
 
-  app.use('/properties', properties);
-  app.use('/landlord', landlord);
-  app.use('/tenant', tenant);
-  app.use('/server', server);
-  // app.use('/properties', properties);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
