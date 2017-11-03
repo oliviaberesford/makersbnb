@@ -1,4 +1,3 @@
-hi
 // force the test environment to 'test'
 process.env.NODE_ENV = 'test';
 var http = require('http');
@@ -18,28 +17,42 @@ describe('makersbnb', function() {
     });
   });
 
-  describe('Sign up', function() {
+  describe('Homepage', function() {
     before(function(done) {
       this.browser.visit('/', done);
     });
 
-    it('should sign up new user', function(done) {
-      this.browser.fill('emailAddress', 'email@example.com')
-      this.browser.fill('password', 'password69')
-      this.browser.fill('confirmPassword', 'password69')
-      this.browser.pressButton('Sign Up', done);
+    it('should be successful', function() {
+      this.browser.assert.success();
     });
 
+    it('should see welcome page text', function() {
+     this.browser.assert.text('h1', 'Welcome to Makers BNB');
+   });
 
-  describe('Login', function() {
+    it('should display login and signup buttons', function(done) {
+      // this.browser.fill('emailAddress', 'email@example.com')
+      // this.browser.fill('password', 'password69')
+      // this.browser.fill('confirmPassword', 'password69')
+      // this.browser.assert.element('Tenant Login');
+      this.browser.pressButton('Tenant Login', done);
+      this.browser.pressButton('Tenant Signup', done);
+      this.browser.pressButton('Landlord Login', done);
+      this.browser.pressButton('Landlord Signup', done);
+    });
+
+  });
+
+
+  describe('Tenant Login', function() {
     before(function(done) {
-      this.browser.visit('/login', done);
+      this.browser.visit('/tenant-login', done);
     });
 
     it('should log in a user', function(done) {
-      this.browser.fill('emailAddress', 'email@example.com')
+      this.browser.fill('email', 'email@example.com')
       this.browser.fill('password', 'password69')
-      this.browser.pressButton('Log in', done);
+      this.browser.pressButton('Login', done);
     });
   });
 
@@ -64,7 +77,6 @@ describe('makersbnb', function() {
     });
   });
 
-  });
 
   after(function(done) {
     this.server.close(done);

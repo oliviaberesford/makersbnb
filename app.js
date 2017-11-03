@@ -7,13 +7,13 @@ var bodyParser = require('body-parser');
 var app = express();
 var mongoUtil = require('./config/database.js');
 app.use(bodyParser.urlencoded({extended: true}));
-module.exports = app;
+
 
 mongoUtil.connectToServer(function(err) {
   // start the rest of your app here
-  app.listen(3000, () => {
-    console.log('listening on 3000');
-  });
+  // app.listen(3000, () => {
+  //   console.log('listening on 3000');
+  // });
 
   // view engine setup
   app.set('views', path.join(__dirname, './views'));
@@ -59,3 +59,12 @@ mongoUtil.connectToServer(function(err) {
     res.render('error');
   });
 });
+
+module.exports = app;
+
+
+if(!module.parent){
+  app.listen(3000, function () {
+    console.log('App listening on port 3000!');
+  });
+}
