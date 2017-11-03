@@ -13,22 +13,20 @@
     <% for(var i=0; i<properties.length; i++) {%>
       <li class="property">
         Owner:
-        <span><%= properties[i].name %></span>:<br />
-        Property Type:
-        <span><%= properties[i].propertyname %></span><br />
-        Description:
-        <span><%= properties[i].propertydescription %></span><br />
-        Price per night:
-        <span><%= properties[i].ppn %></span><br />
-        Availabilty:
+        <span><%= properties[i].name %></span>:<br /> Property Type:
+        <span><%= properties[i].propertyname %></span><br /> Description:
+        <span><%= properties[i].propertydescription %></span><br /> Price per night:
+        <span><%= properties[i].ppn %></span><br /> Availabilty:
         <span><%= properties[i].from %></span> -
         <span><%= properties[i].until %></span>
-        <span><%= properties[i].image-file %></span>
+        <!-- Add image db request -->
+        <!-- Add calendar date db request -->
       </li>
       <% } %>
-    </ul>
+  </ul>
 </body>
 <form>
-<button formaction="/new-property">Add Property</button>
+  <button formaction="/new-property">Add Property</button>
 </form>
+
 </html>

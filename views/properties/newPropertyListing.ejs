@@ -14,59 +14,61 @@
 <body>
   <div class="container">
 
-  <div class="col-sm-6 col-sm-offset-3">
-    <h1><span class="fa fa-sign-in"></span>List your property:</h1>
-  <form action="/new-property" method="POST">
-      <div class="form-group">
-    <input class="form-control" type="text" placeholder="owner's name" name="name" required>
-    <input class="form-control" type="text" placeholder="property name" name="propertyname" required>
-    <input class="form-control" type="text" placeholder="property decription" name="propertydescription" required>
-    <input class="form-control" type="text" placeholder="price per night" name="ppn" required>
-    <input class="form-control" type="text" placeholder="available from" name="from" required>
-    <input class="form-control" type="text" placeholder="available until" name="until" required>
-  </div>
-    <div id="datepicker"></div>
-  <!-- </body> -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-  <script>
-    $(document).ready(function() { //waits for page to load first
-      $('#datepicker').datepicker({});
-    });
-  </script>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1><span class="fa fa-sign-in"></span>List your property:</h1>
+      <form action="/new-property" method="POST">
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="owner's name" name="name" required>
+          <input class="form-control" type="text" placeholder="property name" name="propertyname" required>
+          <input class="form-control" type="text" placeholder="property decription" name="propertydescription" required>
+          <input class="form-control" type="text" placeholder="price per night" name="ppn" required>
+        </div>
 
-  <div class="imageupload panel panel-default">
-    <div class="panel-heading clearfix">
-      <h3 class="panel-title pull-left">Upload Image</h3>
-      <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default active">File</button>
-        <button type="button" class="btn btn-default">URL</button>
-      </div>
-    </div>
-    <div class="file-tab panel-body">
-      <label class="btn btn-default btn-file">
+        <div id="datepicker"></div>
+        <input class="datepicker" name="date" data-date-format="mm/dd/yyyy">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <script>
+          $(document).ready(function() { //waits for page to load first
+            $('#datepicker').datepicker({
+
+            });
+          });
+        </script>
+
+        <div class="imageupload panel panel-default">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Upload Image</h3>
+            <div class="btn-group pull-right">
+              <button type="button" class="btn btn-default active">File</button>
+              <button type="button" class="btn btn-default">URL</button>
+            </div>
+          </div>
+          <div class="file-tab panel-body">
+            <label class="btn btn-default btn-file">
             <span>Browse</span>
             <!-- The file is stored here. -->
             <input type="file" name="image-file">
         </label>
-      <button type="button" class="btn btn-default">Remove</button>
-    </div>
-    <div class="url-tab panel-body">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Image URL">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-default">Submit</button>
+            <button type="button" class="btn btn-default">Remove</button>
+          </div>
+          <div class="url-tab panel-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Image URL">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default">Submit</button>
+              </div>
+            </div>
+            <button type="button" class="btn btn-default">Remove</button>
+            <!-- The URL is stored here. -->
+            <input type="hidden" name="image-url">
+          </div>
         </div>
-      </div>
-      <button type="button" class="btn btn-default">Remove</button>
-      <!-- The URL is stored here. -->
-      <input type="hidden" name="image-url">
+        <button class="btn btn-warning btn-lg" type="submit">List this space!</button>
+      </form>
     </div>
   </div>
-  <button class="btn btn-warning btn-lg" type="submit">List this space!</button>
-</form>
-</div>
-</div>
 </body>
 
 
